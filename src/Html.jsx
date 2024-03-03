@@ -21,7 +21,10 @@ export default function Html({ data, status }) {
             <div className="title">
               <h1>{data.label}</h1>
               <p>{data.location}</p>
-              <span className={status.color}>{status.text}</span>
+              {data.status
+                ? <span className={status.color}>{status.text}</span>
+                : <div className="loader-circle small"></div>
+              }
             </div>
 
             <div className="payment">
@@ -33,7 +36,8 @@ export default function Html({ data, status }) {
             <div className="buttons">
               {data.status
                 ? <a href={data.pay_url} className={status.disabled ? "btn disabled" : "btn"}>Сплатити за прання</a>
-                : <div className="loader-circle"></div>}
+                : <div className="loader-circle"></div>
+              }
             </div>
 
           </section>
