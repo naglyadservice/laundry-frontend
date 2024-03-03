@@ -31,7 +31,7 @@ export default function Html({ data, status }) {
             </div>
 
             <div className="buttons">
-              {data.pay_url
+              {data.status
                 ? <a href={data.pay_url} className={status.disabled ? "btn disabled" : "btn"}>Сплатити за прання</a>
                 : <div className="loader-circle"></div>}
             </div>
