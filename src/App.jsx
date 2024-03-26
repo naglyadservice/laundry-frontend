@@ -1,6 +1,7 @@
 import React from "react";
 import Html from "./Html";
 import Spinner from "./Spinner";
+import Error from "./Error";
 
 
 const pathnameArrFiltered = window.location.pathname
@@ -21,12 +22,23 @@ function App() {
 
   React.useEffect(() => {
     fetch(`https://wash.npc.com.ua/api/waher/${slug}/info`)
-      .then(data => data.json())
-      .then(data => setData({ ...data, isLoading: false }));
+      .then(data => {
+        if (data.status == 404) {
+          console.log("%c404 error while receiving API", "color:white; background:red")
+          return setData({ ...data, isLoading: false, is404: true })
+        }
+        else {
+          console.log("%cAPI received succesfully", "color:white; background:green")
+          return data.json();
+        }
+      })
+      .then(data => setData(prev => ({ ...prev, ...data, isLoading: false })))
+      .catch(data => setData(prev => ({ ...prev, ...data, isLoading: false, is404: true })))
 
     fetch(`https://wash.npc.com.ua/api/waher/${slug}/pay`)
       .then(data => data.json())
-      .then(data => setData(prev => ({ ...prev, ...data })));
+      .then(data => setData(prev => ({ ...prev, ...data })))
+      .catch(data => setData(prev => ({ ...prev, ...data, isLoading: false, is404: true })));
   }, [])
 
   React.useEffect(() => {
@@ -68,12 +80,17 @@ function App() {
 
   }, [data]);
 
-  return <>
-    {data.isLoading === true
-      ? <Spinner />
-      : <Html data={data} status={status} />
-    }
-  </>
+  // ---------------------
+
+  if (data.isLoading === true) {
+    return <Spinner />
+  }
+
+  if (data.is404 === true) {
+    return <Error />
+  }
+
+  return <Html data={data} status={status} />
 }
 
 export default App;

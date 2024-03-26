@@ -10,7 +10,7 @@ export default function Html({ data, status }) {
           </a>
 
           <a href={"tel:+" + data.phone}>
-            <img src="./images/phone-icon.svg" alt="" />
+            <img src="/images/phone-icon.svg" alt="" />
           </a>
         </header>
       </div>
