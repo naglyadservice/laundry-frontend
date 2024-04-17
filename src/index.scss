@@ -465,3 +465,17 @@ footer {
   text-transform: uppercase;
   margin-bottom: 10px;
 }
+
+input[type="range"] {
+  display: block;
+  margin: 0 auto;
+  margin-top: 24px;
+  height: 2px;
+  max-width: 300px;
+  width: 100%;
+  border-radius: 2px;
+  background-color: #bdc3c7;
+
+  -webkit-appearance: none;
+  appearance: none;
+}

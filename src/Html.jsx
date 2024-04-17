@@ -1,6 +1,15 @@
 import React from 'react'
 
 export default function Html({ data, status }) {
+  const [rangeValue, setRangeValue] = React.useState(1);
+  const [price, setPrice] = React.useState(0.75);
+
+  React.useEffect(() => {
+    const calculatedPrice = rangeValue * (data.rent_price / 100);
+
+    setPrice(calculatedPrice.toFixed(2))
+  }, [rangeValue])
+
   return (
     <div className="wrapper">
       <div className="container">
@@ -33,6 +42,18 @@ export default function Html({ data, status }) {
               <a href={data.terms_and_conditions_url}>Умови - Тарифи</a>
             </div>
 
+            <div className="payment">
+              <h2>Ціна - {price}</h2>
+              <input
+                type="range"
+                min="1"
+                max="30"
+                step="1"
+                value={rangeValue}
+                onChange={(i) => setRangeValue(i.target.value)}
+              />
+            </div>
+
             <div className="buttons">
               {data.status
                 ? <a href={data.pay_url} className={status.disabled ? "btn disabled" : "btn"}>Сплатити за прання</a>
@@ -41,38 +62,6 @@ export default function Html({ data, status }) {
             </div>
 
           </section>
-
-          {/* 
-          <section className="transactions">
-            <h2>Останні транзакції</h2>
-
-            <table>
-              <thead>
-                <tr>
-                  <th>Дата</th>
-                  <th>Сума</th>
-                  <th>Чек</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>21.01.2024 <span>20:21</span></td>
-                  <td>10 грн.</td>
-                  <td><a href="/"><button>Отримати</button></a></td>
-                </tr>
-
-                <tr>
-                  <td>21.01.2024 <span>20:21</span></td>
-                  <td>100 грн.</td>
-                  <td><a href="/"><button>Отримати</button></a></td>
-                </tr>
-              </tbody>
-            </table>
-
-            <p>0015</p>
-          </section> 
-          */}
-
         </main>
       </div>
 

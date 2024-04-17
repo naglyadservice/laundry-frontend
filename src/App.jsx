@@ -8,8 +8,7 @@ const pathnameArrFiltered = window.location.pathname
   .split("/")
   .filter((item) => item !== "");
 
-const slug = pathnameArrFiltered[pathnameArrFiltered.length - 1];
-
+const slug = pathnameArrFiltered.at(-1);
 
 
 function App() {
