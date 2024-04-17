@@ -470,12 +470,39 @@ input[type="range"] {
   display: block;
   margin: 0 auto;
   margin-top: 24px;
-  height: 2px;
+  height: 3px;
   max-width: 300px;
   width: 100%;
   border-radius: 2px;
-  background-color: #bdc3c7;
+  background-color: rgba(189, 195, 199, 0.441);
 
   -webkit-appearance: none;
   appearance: none;
+  position: relative;
+
+  border-top: 6px dotted #000;
+  padding-top: 3px;
+
+  &::before,
+  &::after {
+    display: block;
+    position: absolute;
+    bottom: -4px;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: normal;
+    color: #1A1A1A;
+  }
+
+  &::before {
+    content: attr(min);
+    left: -14px;
+  }
+
+  &::after {
+    content: attr(max);
+    right: -26px;
+  }
 }
