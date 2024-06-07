@@ -28,37 +28,31 @@ export default function Html({ data, status }) {
         <main>
           <section className="top">
             <div className="title">
-              <h1>{data.label}</h1>
-              <p>{data.location}</p>
-              {data.status
-                ? <span className={status.color}>{status.text}</span>
-                : <div className="loader-circle small"></div>
-              }
+              <h1>Пралки</h1>
+              <p>Гуртожиток</p>
+
+              {/* 
+                <h1>{data.label}</h1>
+                <p>{data.location}</p>
+                {data.status
+                  ? <span className={status.color}>{status.text}</span>
+                  : <div className="loader-circle small"></div>
+                }
+              */}
+
             </div>
 
             <div className="payment">
               <h2>1 прання - {(data.rent_price / 100)} грн/хв</h2>
-              <p>{data.description}</p>
+              <p>Після оплати у вас буде можливість запустити прання протягом 5 хвилин</p>
+              {/* <p>{data.description}</p> */}
               <a href={data.terms_and_conditions_url}>Умови - Тарифи</a>
             </div>
 
-            <div className="payment">
-              <h2>Ціна - {price}</h2>
-              <input
-                type="range"
-                min="1"
-                max="30"
-                step="1"
-                value={rangeValue}
-                onChange={(i) => setRangeValue(i.target.value)}
-              />
-            </div>
-
-            <div className="buttons">
-              {data.status
-                ? <a href={data.pay_url} className={status.disabled ? "btn disabled" : "btn"}>Сплатити за прання</a>
-                : <div className="loader-circle"></div>
-              }
+            <div className="buttons" style={{ flexDirection: "column", alignItems: "center" }}>
+              <a href="https://wash.npc.com.ua/washers/k1" className="btn">ПРАЛКА ПОВЕРХ №3</a>
+              <a href="https://wash.npc.com.ua/washers/k2" className="btn">ПРАЛКА ПОВЕРХ №5</a>
+              <a href="https://wash.npc.com.ua/washers/k3" className="btn">ПРАЛКА ПОВЕРХ №8</a>
             </div>
 
           </section>
