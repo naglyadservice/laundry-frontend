@@ -400,6 +400,7 @@ header {
 footer {
   padding: 20px;
   background: #1A1A1A;
+  margin-top: auto;
 
   color: #FFF;
   font-size: 12px;
@@ -413,6 +414,11 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  p {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 }
 
 .links {
@@ -466,63 +472,20 @@ footer {
   margin-bottom: 10px;
 }
 
-input[type="range"] {
-  display: block;
-  margin: 0 auto;
-  margin-top: 24px;
-  height: 3px;
-  max-width: 300px;
-  width: 100%;
-  border-radius: 2px;
+.if-questions {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 10px;
+  text-wrap: balance;
+  margin-bottom: 40px;
 
-  -webkit-appearance: none;
-  appearance: none;
-  position: relative;
+  a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
 
-  border-top: 6px dotted rgb(138, 138, 138);
-  padding-top: 3px;
-
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-
-    margin-top: -12px;
-
-    background-color: var(--accent);
-    height: 18px;
-    width: 18px;
-    border-radius: 4px;
-  }
-
-  &::-moz-range-thumb {
-    border: none;
-
-    background-color: var(--accent);
-    height: 18px;
-    width: 18px;
-    border-radius: 4px;
-  }
-
-  &::before,
-  &::after {
-    display: block;
-    position: absolute;
-    bottom: 0px;
-
-    font-family: "Montserrat", sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: normal;
-    color: #1A1A1A;
-  }
-
-  &::before {
-    content: attr(min);
-    left: -14px;
-  }
-
-  &::after {
-    content: attr(max);
-    right: -26px;
+    &:hover {
+      text-decoration: unset;
+    }
   }
 }

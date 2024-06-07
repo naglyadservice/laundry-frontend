@@ -12,7 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./fiscalization.css">
+    <link rel="stylesheet" href="./new.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <meta name="robots" content="noindex, nofollow">
   </head>
@@ -21,12 +23,12 @@
     <div class="wrapper">
       <div class="container">
         <header>
-          <a href="https://www.npc.com.ua/">
-            <img src="./images/naglyad-wash.svg" alt="">
+          <a target="_blank" href="https://www.npc.com.ua/">
+            <img src="https://mrinverted.github.io/react-naglyad.wash/images/naglyad-wash.svg" alt="">
           </a>
 
-          <a href="tel:+">
-            <img src="./images/phone-icon.svg" alt="">
+          <a href="tel:+380960007603">
+            <img src="https://mrinverted.github.io/react-naglyad.wash/images/phone-icon.svg" alt="">
           </a>
         </header>
       </div>
@@ -36,21 +38,27 @@
           <section class="top">
             <div class="title">
               <h1>Пралка №2</h1>
-              <p>Гуртожиток кдадпмд</p>
-              <span>Зайнята</span>
+              <p>Гуртожиток КДАДПМД</p>
+              <span class="green">Вільна</span>
             </div>
 
             <div class="payment">
               <h2>1 прання - 65 грн</h2>
               <p>Після оплати у вас буде можливість запустити прання протягом 5 хвилин</p>
-              <a href="#">Умови - Тарифи</a>
             </div>
 
             <div class="buttons">
-              <a href="/" class="btn">Сплатити за прання</a>
+              <a href="#" class="btn" id="main-button">Сплатити за прання</a>
             </div>
           </section>
 
+          <p class="if-questions">
+            Якщо у вас виникли питання, щось пішло не так чи є побажання стосовно роботи системи звертайтеся у телеграм:
+            <a target="_blank" href="https://t.me/naglyad_pro">@naglyad_pro</a> або за телефоном
+            <a href="tel:+380960007603">096 000 76 03</a>
+          </p>
+
+          <!-- 
           <section class="transactions">
             <h2>Останні транзакції</h2>
 
@@ -78,22 +86,25 @@
             </table>
 
             <p>0015</p>
-          </section>
+          </section> 
+        -->
+
         </main>
       </div>
 
       <footer>
         <p>Якщо у вас виникли питання, щось пішло не так чи є побажання стосовно роботи системи звертайтеся у телеграм <b>@naglyad.pro</b> або за телефоном <b>096 000 7603</b></p>
         <div class="links">
-          <a href="#">Опис послуги</a>
-          <a href="#">Умови повернення</a>
-          <a href="#">Договір оферти</a>
+          <a target="_blank" href="https://npc.naglyad.com/detail-wash/">Опис послуги</a>
+          <a target="_blank" href="https://npc.naglyad.com/povernenya-wash/">Умови повернення</a>
+          <a target="_blank" href="https://npc.naglyad.com/dogovir-wash/">Договір оферти</a>
         </div>
         <p>© Copyright 2024. All Rights Reserved.</p>
       </footer>
     </div>
 
     <script>
+      /*
       try {
         const increment = document.querySelector("#increment");
         const decrement = document.querySelector("#decrement");
@@ -120,6 +131,29 @@
       } catch {
         console.log("Errors with input buttons")
       }
+      */
+
+
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        $("#main-button").click(function () {
+          $.ajax({
+            url: "create_link_liqpay.php",
+            type: "GET",
+            success: function (response) {
+              // В этой функции обрабатываем успешный ответ от сервера (ссылку)
+              // Например, можно перенаправить пользователя на полученную ссылку
+              window.location.href = response;
+            },
+            error: function () {
+              // Обработка ошибок, если запрос не удался
+              alert("Ошибка при выполнении запроса.");
+            }
+          });
+        });
+      });
     </script>
   </body>
 
