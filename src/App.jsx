@@ -14,7 +14,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Intro />} />
-          <Route path='/:slug' element={<Washer />} />
+          <Route path='/washers/:slug' element={<Washer />} />
           <Route path='/error' element={<Error />} />
         </Routes>
       </BrowserRouter>
