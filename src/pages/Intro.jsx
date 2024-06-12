@@ -19,7 +19,7 @@ export default function Intro() {
             <div className="payment">
               <h2>1 ПРАННЯ - 1 ГРН/ХВ</h2>
               <p>Після оплати у вас буде можливість запустити прання протягом 5 хвилин</p>
-              <a href={"https://example.com/"}>Умови - Тарифи</a>
+              <a href="/docs/details.html">Умови - Тарифи</a>
             </div>
 
             <div className="buttons buttons-column">
