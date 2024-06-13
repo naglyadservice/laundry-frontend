@@ -13,7 +13,7 @@ export default function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route index element={<Intro />} />
+          <Route path='/wash' element={<Intro />} />
           <Route path='/washers/:slug' element={<Washer />} />
           <Route path='/error' element={<Error />} />
         </Routes>

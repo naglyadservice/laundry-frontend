@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.c1e98514.css",
-    "main.js": "/static/js/main.8d78b1ce.js",
+    "main.js": "/static/js/main.f520c8e5.js",
     "static/media/naglyad-wash.svg": "/static/media/naglyad-wash.1e13ead23118d0f3fb95f98b91b16ad8.svg",
     "static/media/phone-icon.svg": "/static/media/phone-icon.69b441dca64a54caaf67132bdef4d962.svg",
     "index.html": "/index.html",
     "main.c1e98514.css.map": "/static/css/main.c1e98514.css.map",
-    "main.8d78b1ce.js.map": "/static/js/main.8d78b1ce.js.map"
+    "main.f520c8e5.js.map": "/static/js/main.f520c8e5.js.map"
   },
   "entrypoints": [
     "static/css/main.c1e98514.css",
-    "static/js/main.8d78b1ce.js"
+    "static/js/main.f520c8e5.js"
   ]
 }
