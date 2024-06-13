@@ -43,7 +43,7 @@ export default function Html({ data, status }) {
             </div>
 
             <div className="payment">
-              <h2>1 прання - {(data.rent_price / 100)} грн/хв</h2>
+              <h2>1 прання - {(data.rent_price / 50)} грн</h2>
               <p>Після оплати у вас буде можливість запустити прання протягом 5 хвилин</p>
               {/* <p>{data.description}</p> */}
               <a href={data.terms_and_conditions_url}>Умови - Тарифи</a>
