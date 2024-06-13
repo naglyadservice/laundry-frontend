@@ -3,11 +3,10 @@ import Header from './Header';
 import Footer from './Footer';
 
 export default function RangeLayout({ data, status }) {
-  const [rangeValue, setRangeValue] = React.useState(1);
+  // const [rangeValue, setRangeValue] = React.useState(1);
+  // const price = (rangeValue * (info.rent_price / 100)).toFixed(2);
 
   const { info, payment } = data;
-
-  const price = (rangeValue * (info.rent_price / 100)).toFixed(2);
 
   return (
     <div className="wrapper">
@@ -26,21 +25,20 @@ export default function RangeLayout({ data, status }) {
             </div>
 
             <div className="payment">
-              <h2>1 прання - {(info.rent_price / 100)} грн/хв</h2>
+              <h2>1 прання - 50 грн</h2>
               <p>{info.description}</p>
-              <a href={"https://example.com/"}>Умови - Тарифи</a>
+              <a href="/docs/details.html">Умови - Тарифи</a>
             </div>
 
             <div className="payment">
-              <h2>Ціна - {price}</h2>
-              <input
+              {/* <input
                 type="range"
                 min="1"
                 max="30"
                 step="1"
                 value={rangeValue}
                 onChange={(i) => setRangeValue(i.target.value)}
-              />
+              /> */}
             </div>
 
             <div className="buttons">
