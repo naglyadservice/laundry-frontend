@@ -21,7 +21,8 @@ export default function Washer() {
   }, [])
 
   React.useEffect(() => {
-    setColor(info, setStatus);
+    console.log(info)
+    setColor(info.payment, setStatus);
   }, [info]);
 
   // ---------------------
