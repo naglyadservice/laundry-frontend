@@ -9,7 +9,12 @@ const fetchInfo = createAsyncThunk(
 
       if (request.status == 404) {
         console.log("%c404 error while receiving INFO", "color:white; background:red");
-        throw new Error("data.status = 404");
+        throw 404;
+      }
+
+      if (request.status == 500) {
+        console.log("%c500 error while receiving INFO", "color:white; background:red");
+        throw 500;
       }
 
       console.log("%cINFO received succesfully", "color:white; background:green");
@@ -30,7 +35,7 @@ const fetchPayment = createAsyncThunk(
 
       if (request.status == 404) {
         console.log("%c404 error while receiving PAYMENT", "color:white; background:red");
-        throw new Error("data.status = 404");
+        throw 404;
       }
 
       console.log("%cPAYMENT received succesfully", "color:white; background:green");

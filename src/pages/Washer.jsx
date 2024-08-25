@@ -29,7 +29,9 @@ export default function Washer() {
 
   if (info.isLoading) return <Spinner />;
 
-  if (info.isError) navigate("/error");
+  if (info.isError && info.info === 404) return navigate("/error404");
+
+  if (info.isError && info.info === 500) return navigate("/error500");
 
   return <RangeLayout data={info} status={status} />
 }

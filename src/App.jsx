@@ -15,7 +15,8 @@ export default function App() {
         <Routes>
           <Route path='/wash' element={<Intro />} />
           <Route path='/washers/:slug' element={<Washer />} />
-          <Route path='/error' element={<Error />} />
+          <Route path='/error404' element={<Error title="Сторінку не знайдено" />} />
+          <Route path='/error500' element={<Error title="Сталася помилка, зверніться до адміністрації" />} />
         </Routes>
       </BrowserRouter>
     </Provider>

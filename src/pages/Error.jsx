@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Error() {
+export default function Error({ title }) {
   return (
     <div className='loader'>
-      <div className="error">Сторінку не знайдено</div>
+      <div className="error">{title}</div>
     </div>
   )
 }
