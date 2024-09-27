@@ -1,10 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchInfo } from '../redux/washer-redux';
+
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
 
 
 export default function Intro() {
+  const dispatch = useDispatch();
+  const info = useSelector(store => store.washer.info);
+
+  React.useEffect(() => {
+    dispatch(fetchInfo('k4'));
+  }, [])
+
   return (
     <div className="wrapper">
       <Header />
@@ -14,21 +24,29 @@ export default function Intro() {
           <section className="top">
             <div className="title">
               <h1>Пралки</h1>
-              <p>Гуртожиток</p>
+              <p>{info.location}</p>
             </div>
 
             <div className="payment">
-              <h2>1 прання - 50 грн</h2>
+              <h2>1 прання - {(info?.rental?.price_per_wash || 6000) / 100} {info?.rental?.currency || "UAH"}</h2>
               <p>Після оплати у вас буде можливість запустити прання протягом 5 хвилин</p>
-              <a href="/docs/details.html">Умови - Тарифи</a>
+              {info?.page?.terms_and_conditions_url && <a href={info.page.terms_and_conditions_url}>Умови - Тарифи</a>}
             </div>
 
             <div className="buttons buttons-column">
-              <Link to="/washers/k1" className="btn">ПРАЛКА ПОВЕРХ №3</Link>
-              <Link to="/washers/k2" className="btn">ПРАЛКА ПОВЕРХ №5</Link>
-              <Link to="/washers/k3" className="btn">ПРАЛКА ПОВЕРХ №8</Link>
+              <Link to="/washers/k1" className="btn">ПРАЛКА K1</Link>
+              <Link to="/washers/k2" className="btn">ПРАЛКА K2</Link>
+              <Link to="/washers/k3" className="btn">ПРАЛКА K3</Link>
+              <Link to="/washers/k4" className="btn">ПРАЛКА K4</Link>
+              <Link to="/washers/k5" className="btn">ПРАЛКА K5</Link>
+              <Link to="/washers/k6" className="btn">ПРАЛКА K6</Link>
+              <Link to="/washers/k7" className="btn">ПРАЛКА K7</Link>
+              <Link to="/washers/o1" className="btn">ПРАЛКА O1</Link>
+              <Link to="/washers/o2" className="btn">ПРАЛКА O2</Link>
+              <Link to="/washers/o3" className="btn">ПРАЛКА O3</Link>
+              <Link to="/washers/o4" className="btn">ПРАЛКА O4</Link>
+              <Link to="/washers/o5" className="btn">ПРАЛКА O5</Link>
             </div>
-
           </section>
         </main>
       </div>

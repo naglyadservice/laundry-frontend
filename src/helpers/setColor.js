@@ -1,7 +1,7 @@
 function setColor(data, setStatus) {
 
   switch (data.status) {
-    case 'available':
+    case 'AVAILABLE':
       setStatus(prev => ({
         ...prev,
         text: "Вільна",
@@ -10,7 +10,7 @@ function setColor(data, setStatus) {
       }));
       break;
 
-    case 'busy':
+    case 'BUSY':
       setStatus(prev => ({
         ...prev,
         text: "Зайнята",
@@ -18,7 +18,7 @@ function setColor(data, setStatus) {
       }));
       break;
 
-    case 'unavailable':
+    case 'UNAVAILABLE':
       setStatus(prev => ({
         ...prev,
         text: "Не доступна",

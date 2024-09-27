@@ -4,21 +4,22 @@ const fetchInfo = createAsyncThunk(
   "washer/info",
   async function (slug, api) {
     try {
-      const request = await fetch(`https://wash.npc.com.ua/api/waher/${slug}/info`);
+      const request = await fetch(`https://laundry.iotapps.net/api/washing_machine/${slug}`);
       const data = await request.json();
+      if (!data || data.detail) throw new Error("washing mashing is missed");
+      return data;
+    } catch (error) {
+      return api.rejectWithValue(error);
+    }
+  }
+);
 
-      if (request.status == 404) {
-        console.log("%c404 error while receiving INFO", "color:white; background:red");
-        throw 404;
-      }
-
-      if (request.status == 500) {
-        console.log("%c500 error while receiving INFO", "color:white; background:red");
-        throw 500;
-      }
-
-      console.log("%cINFO received succesfully", "color:white; background:green");
-
+const fetchStatus = createAsyncThunk(
+  "washer/status",
+  async function (slug, api) {
+    try {
+      const request = await fetch(`https://laundry.iotapps.net/api/washing_machine/${slug}/status`);
+      const data = await request.json();
       return data;
     } catch (error) {
       return api.rejectWithValue(error);
@@ -30,16 +31,8 @@ const fetchPayment = createAsyncThunk(
   "washer/payment",
   async function (slug, api) {
     try {
-      const request = await fetch(`https://wash.npc.com.ua/api/waher/${slug}/pay`);
+      const request = await fetch(`https://laundry.iotapps.net/api/washing_machine/${slug}/payment`);
       const data = await request.json();
-
-      if (request.status == 404) {
-        console.log("%c404 error while receiving PAYMENT", "color:white; background:red");
-        throw 404;
-      }
-
-      console.log("%cPAYMENT received succesfully", "color:white; background:green");
-
       return data;
     } catch (error) {
       return api.rejectWithValue(error);
@@ -52,6 +45,7 @@ const washerSlice = createSlice({
   initialState: {
     info: {},
     payment: {},
+    status: {},
     isLoading: true,
     isError: false
   },
@@ -90,7 +84,24 @@ const washerSlice = createSlice({
     builder.addCase(fetchPayment.rejected, (state, action) => {
       state.isLoading = false;
       state.isError = true;
-      state.payment = action.payload;
+    })
+
+    // ----------------
+
+    builder.addCase(fetchStatus.pending, (state, action) => {
+      state.isLoading = true;
+      state.isError = false;
+    })
+
+    builder.addCase(fetchStatus.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isError = false;
+      state.status = action.payload?.status;
+    })
+
+    builder.addCase(fetchStatus.rejected, (state, action) => {
+      state.isLoading = false;
+      state.isError = true;
     })
   }
 })
@@ -101,4 +112,4 @@ const store = configureStore({
   }
 })
 
-export { store, fetchInfo, fetchPayment }
+export { store, fetchInfo, fetchPayment, fetchStatus }

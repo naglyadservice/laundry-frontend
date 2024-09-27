@@ -1,14 +1,19 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 export default function Footer() {
+  const info = useSelector(store => store.washer.info);
+
   return (
     <footer>
-      <p>Якщо у вас виникли питання, щось пішло не так чи є побажання стосовно роботи системи звертайтеся у телеграм @naglyad.pro або за телефоном 096 000 7603</p>
+      {info?.page?.footer_text && <p>{info.page.footer_text}</p>}
+
       <div className="links">
-        <a href="/docs/details.html">Опис послуги</a>
-        <a href="/docs/return.html">Умови повернення</a>
-        <a href="/docs/offer.html">Договір оферти</a>
+        {info?.page?.service_description_url && <a href={info.page.service_description_url}>Опис послуги</a>}
+        {info?.page?.terms_of_refund_url && <a href={info.page.terms_of_refund_url}>Умови повернення</a>}
+        {info?.page?.offer_agreement_url && <a href={info.page.offer_agreement_url}>Договір оферти</a>}
       </div>
+
       <p>© Copyright 2024. All Rights Reserved.</p>
     </footer>
   )

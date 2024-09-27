@@ -1,12 +1,12 @@
 import React from 'react'
 import Header from './Header';
 import Footer from './Footer';
+import { useSelector } from 'react-redux';
 
-export default function RangeLayout({ data, status }) {
-  // const [rangeValue, setRangeValue] = React.useState(1);
-  // const price = (rangeValue * (info.rent_price / 100)).toFixed(2);
+export default function RangeLayout({ status }) {
+  const { info, payment } = useSelector(store => store.washer);
 
-  const { info, payment } = data;
+  console.log(info)
 
   return (
     <div className="wrapper">
@@ -16,38 +16,26 @@ export default function RangeLayout({ data, status }) {
         <main>
           <section className="top">
             <div className="title">
-              <h1>{info.label}</h1>
-              <p>{info.location}</p>
-              {payment.status
+              <h1>{info?.page?.label || "Пралка"}</h1>
+              <p>{info?.location || ""}</p>
+              {status
                 ? <span className={status.color}>{status.text}</span>
                 : <div className="loader-circle small"></div>
               }
             </div>
 
             <div className="payment">
-              <h2>1 прання - 50 грн</h2>
-              <p>{info.description}</p>
-              <a href="/docs/details.html">Умови - Тарифи</a>
-            </div>
-
-            <div className="payment">
-              {/* <input
-                type="range"
-                min="1"
-                max="30"
-                step="1"
-                value={rangeValue}
-                onChange={(i) => setRangeValue(i.target.value)}
-              /> */}
+              {info?.rental?.price_per_wash && <h2>1 прання - {info.rental.price_per_wash / 100} {info?.rental?.currency || "UAH"}</h2>}
+              {info?.page?.description && <p>{info.page.description}</p>}
+              {info?.page?.terms_and_conditions_url && <a href={info.page.terms_and_conditions_url}>Умови - Тарифи</a>}
             </div>
 
             <div className="buttons">
-              {payment.status
-                ? <a href={payment.pay_url} className={status.disabled ? "btn disabled" : "btn"}>Сплатити за прання</a>
+              {payment?.detail
+                ? <a href={payment.payment_url} className={status.disabled ? "btn disabled" : "btn"}>Сплатити за прання</a>
                 : <div className="loader-circle"></div>
               }
             </div>
-
           </section>
         </main>
       </div>
