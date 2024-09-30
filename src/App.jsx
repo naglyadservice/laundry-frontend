@@ -20,7 +20,7 @@ export default function App() {
           <Route path='/error500' element={<Error title="Сталася помилка, зверніться до адміністрації" />} />
 
           {/* Redirect from /ws/:slug to /washers/:slug */}
-          <Route path='/ws/:slug' element={<Navigate to="/washers/:slug" replace />} />
+          <Route path='/wm/:slug' element={<Washer />} />
 
           {/* Optional: Redirect undefined paths to /error404 */}
           <Route path='*' element={<Navigate to="/error404" replace />} />
