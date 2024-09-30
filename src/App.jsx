@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { store } from './redux/washer-redux';
 
 import Error from './pages/Error';
