@@ -19,12 +19,11 @@ export default function Washer() {
 
   React.useEffect(() => {
     dispatch(fetchInfo(slug));
-    dispatch(fetchPayment(slug));
     dispatch(fetchStatus(slug));
   }, [])
 
   React.useEffect(() => {
-    setColor(info.payment, setStatus);
+    setColor(info, setStatus);
   }, [info]);
 
   // ---------------------

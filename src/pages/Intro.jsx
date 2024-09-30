@@ -34,18 +34,18 @@ export default function Intro() {
             </div>
 
             <div className="buttons buttons-column">
-              <Link to="/washers/k1" className="btn">ПРАЛКА K1</Link>
-              <Link to="/washers/k2" className="btn">ПРАЛКА K2</Link>
-              <Link to="/washers/k3" className="btn">ПРАЛКА K3</Link>
-              <Link to="/washers/k4" className="btn">ПРАЛКА K4</Link>
-              <Link to="/washers/k5" className="btn">ПРАЛКА K5</Link>
-              <Link to="/washers/k6" className="btn">ПРАЛКА K6</Link>
-              <Link to="/washers/k7" className="btn">ПРАЛКА K7</Link>
-              <Link to="/washers/o1" className="btn">ПРАЛКА O1</Link>
-              <Link to="/washers/o2" className="btn">ПРАЛКА O2</Link>
-              <Link to="/washers/o3" className="btn">ПРАЛКА O3</Link>
-              <Link to="/washers/o4" className="btn">ПРАЛКА O4</Link>
-              <Link to="/washers/o5" className="btn">ПРАЛКА O5</Link>
+              <Link to="/wm/k1" className="btn">ПРАЛКА K1</Link>
+              <Link to="/wm/k2" className="btn">ПРАЛКА K2</Link>
+              <Link to="/wm/k3" className="btn">ПРАЛКА K3</Link>
+              <Link to="/wm/k4" className="btn">ПРАЛКА K4</Link>
+              <Link to="/wm/k5" className="btn">ПРАЛКА K5</Link>
+              <Link to="/wm/k6" className="btn">ПРАЛКА K6</Link>
+              <Link to="/wm/k7" className="btn">ПРАЛКА K7</Link>
+              <Link to="/wm/o1" className="btn">ПРАЛКА O1</Link>
+              <Link to="/wm/o2" className="btn">ПРАЛКА O2</Link>
+              <Link to="/wm/o3" className="btn">ПРАЛКА O3</Link>
+              <Link to="/wm/o4" className="btn">ПРАЛКА O4</Link>
+              <Link to="/wm/o5" className="btn">ПРАЛКА O5</Link>
             </div>
           </section>
         </main>

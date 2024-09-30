@@ -15,6 +15,7 @@ function setColor(data, setStatus) {
         ...prev,
         text: "Зайнята",
         color: "red",
+        disabled: true,
       }));
       break;
 
@@ -23,6 +24,7 @@ function setColor(data, setStatus) {
         ...prev,
         text: "Не доступна",
         color: "red",
+        disabled: true,
       }));
       break;
 
@@ -31,6 +33,7 @@ function setColor(data, setStatus) {
         ...prev,
         text: "Відключена",
         color: "gray",
+        disabled: true,
       }));
   }
 

@@ -1,12 +1,28 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Header from './Header';
 import Footer from './Footer';
-import { useSelector } from 'react-redux';
 
 export default function RangeLayout({ status }) {
-  const { info, payment } = useSelector(store => store.washer);
+  const { slug } = useParams();
+  const { info } = useSelector(store => store.washer);
+  const [isError, setIsError] = React.useState(false);
 
-  console.log(info)
+  const onButtonClick = async () => {
+    try {
+      const req = await fetch(`https://laundry.iotapps.net/api/washing_machine/${slug}/payment`);
+      const res = await req.json();
+
+      if (res.payment_url) {
+        window.location.assign(res.payment_url);
+      } else {
+        setIsError(true);
+      }
+    } catch (error) {
+      setIsError(true);
+    }
+  }
 
   return (
     <div className="wrapper">
@@ -31,10 +47,12 @@ export default function RangeLayout({ status }) {
             </div>
 
             <div className="buttons">
-              {payment?.detail
-                ? <a href={payment.payment_url} className={status.disabled ? "btn disabled" : "btn"}>Сплатити за прання</a>
-                : <div className="loader-circle"></div>
-              }
+              <button
+                className={status.disabled ? "btn disabled" : "btn"}
+                onClick={onButtonClick}
+              >
+                {isError ? 'Что-то пошло не так...' : 'Сплатити за прання'}
+              </button>
             </div>
           </section>
         </main>
