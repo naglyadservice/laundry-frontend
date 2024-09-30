@@ -15,7 +15,7 @@ export default function App() {
         <Routes>
           {/* Existing Routes */}
           <Route path='/wash' element={<Intro />} />
-          <Route path='/wm/:slug' element={<Washer />} />
+          <Route path='/washers/:slug' element={<Washer />} />
           <Route path='/error404' element={<Error title="Сторінку не знайдено" />} />
           <Route path='/error500' element={<Error title="Сталася помилка, зверніться до адміністрації" />} />
 
