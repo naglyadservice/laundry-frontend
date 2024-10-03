@@ -1,7 +1,7 @@
 #!/bin/bash
-aws sso login --profile naglyad-admin
+assume naglyad
 
-aws ecr get-login-password --region eu-central-1 --profile naglyad-admin | docker login --username AWS --password-stdin 474668387779.dkr.ecr.eu-central-1.amazonaws.com
+aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 474668387779.dkr.ecr.eu-central-1.amazonaws.com
 
 docker buildx build --platform linux/amd64 -t landry/frontend/prod .
 
