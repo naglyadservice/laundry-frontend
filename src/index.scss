@@ -147,6 +147,8 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
+
+  flex-grow: 1;
 }
 
 header {
@@ -464,6 +466,11 @@ footer {
   border-top-color: transparent;
 }
 
+.loader-circle.--white {
+  border: 4px solid var(--white);
+  border-top-color: transparent;
+}
+
 @keyframes spinning {
   0% {
     transform: rotate(0deg);
@@ -540,5 +547,35 @@ input[type="range"] {
   &::after {
     content: attr(max);
     right: -26px;
+  }
+}
+
+.hidden-content {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.wrapper-for-hidden-content {
+  display: grid;
+  grid-template-rows: 0fr;
+
+  transition: 0.5s;
+
+  &.active {
+    grid-template-rows: 1fr;
+  }
+}
+
+.more-description-trigger {
+  width: fit-content;
+  margin: 0 auto;
+  cursor: pointer;
+
+  span {
+    display: inline-block;
+  }
+
+  &.active span {
+    transform: rotate(180deg);
   }
 }

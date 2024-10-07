@@ -28,11 +28,20 @@ function setColor(data, setStatus) {
       }));
       break;
 
-    default:
+    case 'OFFLINE':
       setStatus(prev => ({
         ...prev,
         text: "Відключена",
         color: "gray",
+        disabled: true,
+      }));
+      break;
+
+    default:
+      setStatus(prev => ({
+        ...prev,
+        text: "",
+        color: "",
         disabled: true,
       }));
   }
