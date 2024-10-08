@@ -21,6 +21,7 @@ export default function App() {
 
           {/* Redirect from /ws/:slug to /washers/:slug */}
           <Route path='/wm/:slug' element={<Washer />} />
+          <Route path='/washing-machines/:slug' element={<Washer />} />
 
           {/* Optional: Redirect undefined paths to /error404 */}
           <Route path='*' element={<Navigate to="/error404" replace />} />
