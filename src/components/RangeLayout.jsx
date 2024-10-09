@@ -86,7 +86,7 @@ export default function RangeLayout({ status }) {
                 </>
               }
 
-              {info?.page?.description && <p>{info.page.description}</p>}
+              {info?.page?.description && <p dangerouslySetInnerHTML={{ __html: info.page.description }}></p>}
 
               {info?.page?.terms_and_conditions_url && <a href={info.page.terms_and_conditions_url}>Умови - Тарифи</a>}
             </div>

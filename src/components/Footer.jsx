@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer>
-      {info?.page?.footer_text && <p>{info.page.footer_text}</p>}
+      {info?.page?.footer_text && <p dangerouslySetInnerHTML={{ __html: info.page.footer_text }}></p>}
 
       <div className="links">
         {info?.page?.service_description_url && <a href={info.page.service_description_url}>Опис послуги</a>}
