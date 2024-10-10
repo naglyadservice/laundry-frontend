@@ -66,8 +66,9 @@ export default function RangeLayout({ status }) {
                   <div className={isAdditionalInfo ? 'wrapper-for-hidden-content active' : 'wrapper-for-hidden-content'}>
                     <div className='hidden-content'>
                       <p>
-                        Система предавторизує {info.rental.hold_amount / 100} гривень, далі в залежності від обраного вами режиму в залежності від тривалості прання з вас знімуться кошти еквівалентно {info.rental.price_per_minute / 100} грн/хвилина, а решта повернеться на рахунок автоматично.
+                        Система предавторизує {info.rental.hold_amount / 100} гривень. Залежно від обраного режиму та тривалості прання, з вашого рахунку буде знято кошти за тарифом {info.rental.price_per_minute / 100} грн/хвилина, а решта автоматично повернеться на рахунок.
                       </p>
+
                       <p>
                         <b>УВАГА 1: </b>
                         Час прання на пральній машині є розрахунковим і залежить від багатьох факторів. Детальніше в <a href="https://t.me/info_naglyad_wash">INFO</a>.
@@ -88,7 +89,7 @@ export default function RangeLayout({ status }) {
 
               {info?.page?.description && <p dangerouslySetInnerHTML={{ __html: info.page.description }}></p>}
 
-              {info?.page?.terms_and_conditions_url && <a href={info.page.terms_and_conditions_url}>Умови - Тарифи</a>}
+              {/* {info?.page?.terms_and_conditions_url && <a href={info.page.terms_and_conditions_url}>Умови - Тарифи</a>} */}
             </div>
 
             <div className="buttons">
