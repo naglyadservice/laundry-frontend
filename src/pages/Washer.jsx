@@ -21,8 +21,11 @@ export default function Washer() {
   }, [])
 
   React.useEffect(() => {
-    console.log(info)
+    console.log(info);
     setColor(info.payment, setStatus);
+
+    const redirectUrl = info?.info?.redirect_url;
+    if (redirectUrl) window.location.href = redirectUrl;
   }, [info]);
 
   // ---------------------

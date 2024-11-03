@@ -60,6 +60,7 @@ const washerSlice = createSlice({
     builder.addCase(fetchInfo.pending, (state, action) => {
       state.isLoading = true;
       state.isError = false;
+      state.info = {};
     })
 
     builder.addCase(fetchInfo.fulfilled, (state, action) => {
@@ -79,6 +80,7 @@ const washerSlice = createSlice({
     builder.addCase(fetchPayment.pending, (state, action) => {
       state.isLoading = true;
       state.isError = false;
+      state.payment = {};
     })
 
     builder.addCase(fetchPayment.fulfilled, (state, action) => {
