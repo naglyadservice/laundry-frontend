@@ -23,8 +23,10 @@ export default function App() {
           <Route path='/wm/:slug' element={<Washer />} />
           <Route path='/washing-machines/:slug' element={<Washer />} />
 
+          <Route path='*' element={<Error title="Сторінку не знайдено" />} />
+
           {/* Optional: Redirect undefined paths to /error404 */}
-          <Route path='*' element={<Navigate to="/error404" replace />} />
+          {/* <Route path='*' element={<Navigate to="/error404" replace />} /> */}
         </Routes>
       </BrowserRouter>
     </Provider>
