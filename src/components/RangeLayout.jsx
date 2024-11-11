@@ -14,7 +14,7 @@ export default function RangeLayout({ status }) {
   const onButtonClick = async () => {
     try {
       setIsLoading(true);
-      const req = await fetch(`https://laundry.iotapps.net/api/washing_machine/${slug}/payment`);
+      const req = await fetch(`${process.env.REACT_APP_DOMAIN}/api/washing_machine/${slug}/payment`);
       const res = await req.json();
 
       if (res.payment_url) {
