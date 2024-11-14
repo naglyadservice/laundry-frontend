@@ -33,7 +33,7 @@ export default function RangeLayout({ status }) {
     <div className="wrapper">
       <Header />
 
-      <div className="container">
+      <div className="container" style={{ flexGrow: 1 }}>
         <main>
           <section className="top">
             <div className="title">

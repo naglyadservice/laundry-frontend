@@ -1,0 +1,15 @@
+{
+  "files.exclude": {
+    "node_modules": true,
+    ".vscode": true,
+    "build": true,
+    "public": true,
+    " .dockerignore": true,
+    ".gitignore": true,
+    "ecr-push.sh": true,
+    "nginx.conf": true,
+    "README.md": true,
+    "package-lock.json": true,
+    "Dockerfile": true
+  }
+}
