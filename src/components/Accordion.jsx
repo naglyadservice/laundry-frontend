@@ -29,7 +29,7 @@ function Accordion({ groupLabel, groupItems }) {
               <AccordionItem
                 key={index}
                 slug={item.slug}
-                link={`https://laundry.iotapps.net/wm/${item.slug}`}
+                link={`${process.env.REACT_APP_DOMAIN}/wm/${item.slug}`}
               />
             ))}
           </ul>
