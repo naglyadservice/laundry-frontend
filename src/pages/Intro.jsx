@@ -24,7 +24,7 @@ export default function Intro() {
           <section className="top">
             <div className="title">
               <h1>Пралки</h1>
-              {(typeof info.location === "string") && <p>{info.location}</p>}
+              <p>{info.location}</p>
             </div>
 
             <div className="payment">

@@ -40,8 +40,8 @@ function setColor(data, setStatus) {
     default:
       setStatus(prev => ({
         ...prev,
-        text: "Відключена",
-        color: "gray",
+        text: "",
+        color: "",
         disabled: true,
       }));
   }

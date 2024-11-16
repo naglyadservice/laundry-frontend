@@ -1,5 +1,4 @@
 import { configureStore, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { allWashersSlice } from "./all-launders";
 
 const fetchInfo = createAsyncThunk(
   "washer/info",
@@ -109,8 +108,7 @@ const washerSlice = createSlice({
 
 const store = configureStore({
   reducer: {
-    washer: washerSlice.reducer,
-    allLaunders: allWashersSlice.reducer
+    washer: washerSlice.reducer
   }
 })
 

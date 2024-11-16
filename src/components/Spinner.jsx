@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Spinner(props) {
+export default function Spinner() {
   return (
     <div className='loader'>
-      <div className="loader-circle" {...props}></div>
+      <div className="loader-circle"></div>
     </div>
   )
 }

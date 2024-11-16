@@ -6,7 +6,6 @@ import { store } from './redux/washer-redux';
 import Error from './pages/Error';
 import Intro from './pages/Intro';
 import Washer from './pages/Washer';
-import AllLaunders from './pages/AllLaunders';
 
 
 export default function App() {
@@ -15,7 +14,6 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           {/* Existing Routes */}
-          <Route path='/all/:slug' element={<AllLaunders />} />
           <Route path='/wash' element={<Intro />} />
           <Route path='/washers/:slug' element={<Washer />} />
           <Route path='/error404' element={<Error title="Сторінку не знайдено" />} />
