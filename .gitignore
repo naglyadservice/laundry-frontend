@@ -23,3 +23,6 @@ yarn-error.log*
 
 /INIT
 /build
+
+.idea
+.vscode

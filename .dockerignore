@@ -6,3 +6,4 @@ Dockerfile
 .gitignore
 npm-debug.log
 .env
+.env.local
