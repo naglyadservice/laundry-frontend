@@ -33,12 +33,16 @@ export default function RangeLayout({ status }) {
     <div className="wrapper">
       <Header />
 
-      <div className="container">
+      <div className="container" style={{ flexGrow: 1 }}>
         <main>
           <section className="top">
             <div className="title">
               <h1>{info?.page?.label || "Пралка"}</h1>
-              <p>{info?.location || ""}</p>
+
+              {(typeof info?.location === "string") && <p>{info.location || ""}</p>}
+              {(typeof info?.location?.label === "string") && <p>{info.location.label || ""}</p>}
+              {(typeof info?.location?.address === "string") && <p>{info.location.address || ""}</p>}
+
               <p style={{ textTransform: "uppercase" }}><b>{slug}</b></p>
               {status.text
                 ? <span className={status.color}>{status.text}</span>
