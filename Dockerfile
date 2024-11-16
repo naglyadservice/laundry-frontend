@@ -4,6 +4,12 @@ FROM node:18-alpine AS build
 # Set working directory
 WORKDIR /app
 
+# Define build arguments
+ARG REACT_APP_DOMAIN
+
+# Set environment variable for the build
+ENV REACT_APP_DOMAIN=${REACT_APP_DOMAIN}
+
 # Copy package.json and package-lock.json
 COPY package.json package-lock.json ./
 
