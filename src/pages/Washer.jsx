@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { ErrorBoundary } from 'react-error-boundary';
 
 import { setColor } from '../helpers/setColor';
 import { fetchInfo, fetchPayment, fetchStatus } from '../redux/washer-redux';
@@ -37,5 +38,9 @@ export default function Washer() {
 
   // if (info.isError && info.info === 500) return navigate("/error500");
 
-  return <RangeLayout status={status} />
+  return (
+    <ErrorBoundary fallback={<Error title="Сталася помилка, зверніться до адміністрації" />}>
+      <RangeLayout status={status} />
+    </ErrorBoundary>
+  )
 }
