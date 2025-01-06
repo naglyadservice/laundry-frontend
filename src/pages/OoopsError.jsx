@@ -11,8 +11,9 @@ export default function OoopsError() {
   const onSearchButtonClick = () => {
     const v = value.trim().toLowerCase();
     if (!v) return;
-    navigate("/wm/" + v);
-    setValue("");
+    // navigate("/wm/" + v);
+    // setValue("");
+    window.location.assign("/wm/" + v);
   }
 
   return (
