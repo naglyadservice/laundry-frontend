@@ -8,6 +8,7 @@ import Intro from './pages/Intro';
 import Washer from './pages/Washer';
 import AllLaunders from './pages/AllLaunders';
 import ExternalRedirect from './components/ExternalRedirect';
+import OoopsError from './pages/OoopsError';
 
 
 export default function App() {
@@ -28,9 +29,8 @@ export default function App() {
 
           <Route path='/support' element={<ExternalRedirect url='https://t.me/info_naglyad_wash' />} />
 
-          <Route path='*' element={<Error title="Сторінку не знайдено" />} />
-
-          {/* Optional: Redirect undefined paths to /error404 */}
+          <Route path='*' element={<OoopsError />} />
+          {/* <Route path='*' element={<Error title="Сторінку не знайдено" />} /> */}
           {/* <Route path='*' element={<Navigate to="/error404" replace />} /> */}
         </Routes>
       </BrowserRouter>
