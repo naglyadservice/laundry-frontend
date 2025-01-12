@@ -41,6 +41,22 @@ const fetchPayment = createAsyncThunk(
   }
 );
 
+const fetchPaymentFromRange = createAsyncThunk(
+  "washer/paymentWithRange",
+  async function (time, api) {
+    try {
+      const request = await fetch(`${process.env.REACT_APP_DOMAIN}/api/washing_machine/${slug}/payment`, {
+        method: "POST",
+        body: JSON.stringify({ time_minutes: time })
+      });
+      const data = await request.json();
+      return data;
+    } catch (error) {
+      return api.rejectWithValue(error);
+    }
+  }
+)
+
 const washerSlice = createSlice({
   name: "washer",
   initialState: {
@@ -83,6 +99,24 @@ const washerSlice = createSlice({
     })
 
     builder.addCase(fetchPayment.rejected, (state, action) => {
+      state.isLoading = false;
+      state.isError = true;
+    })
+
+    // ----------------
+
+    builder.addCase(fetchPaymentFromRange.pending, (state, action) => {
+      state.isLoading = true;
+      state.isError = false;
+    })
+
+    builder.addCase(fetchPaymentFromRange.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isError = false;
+      state.payment = action.payload;
+    })
+
+    builder.addCase(fetchPaymentFromRange.rejected, (state, action) => {
       state.isLoading = false;
       state.isError = true;
     })

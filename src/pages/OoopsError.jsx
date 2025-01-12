@@ -1,18 +1,15 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import search from "../images/search.svg"
 import code from "../images/wash-code.jpg"
+
+
 
 export default function OoopsError() {
   const [value, setValue] = React.useState("");
 
-  const navigate = useNavigate();
-
   const onSearchButtonClick = () => {
     const v = value.trim().toLowerCase();
     if (!v) return;
-    // navigate("/wm/" + v);
-    // setValue("");
     window.location.assign("/wm/" + v);
   }
 

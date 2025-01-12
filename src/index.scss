@@ -510,7 +510,7 @@ input[type="range"] {
   appearance: none;
   position: relative;
 
-  border-top: 6px dotted rgb(138, 138, 138);
+  border-top: 6px solid rgba(138, 138, 138, 0.3);
   padding-top: 3px;
 
   &::-webkit-slider-thumb {
@@ -545,6 +545,8 @@ input[type="range"] {
     font-weight: 700;
     line-height: normal;
     color: #1A1A1A;
+
+    transform: translateY(3px);
   }
 
   &::before {

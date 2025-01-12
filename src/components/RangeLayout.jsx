@@ -10,11 +10,17 @@ export default function RangeLayout({ status }) {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
   const [isAdditionalInfo, setIsAdditionalInfo] = React.useState(false);
+  const [rangeValue, setRangeValue] = React.useState(0);
 
   const onButtonClick = async () => {
     try {
       setIsLoading(true);
-      const req = await fetch(`${process.env.REACT_APP_DOMAIN}/api/washing_machine/${slug}/payment`);
+      const url = `${process.env.REACT_APP_DOMAIN}/api/washing_machine/${slug}/payment`;
+      const urlWithRange = `${url}?time_minutes=${rangeValue}`;
+      const isRange = (info?.rental?.mode === "TIME_SELECTABLE");
+
+      const req = await fetch(isRange ? urlWithRange : url);
+
       const res = await req.json();
 
       if (res.payment_url) {
@@ -92,9 +98,21 @@ export default function RangeLayout({ status }) {
               }
 
               {info?.page?.description && <p dangerouslySetInnerHTML={{ __html: info.page.description }}></p>}
-
-              {/* {info?.page?.terms_and_conditions_url && <a href={info.page.terms_and_conditions_url}>Умови - Тарифи</a>} */}
             </div>
+
+            {(info?.rental?.mode === "TIME_SELECTABLE") && (
+              <div className="payment">
+                <h2>Хвилин - {rangeValue}</h2>
+                <input
+                  type="range"
+                  min={info.rental.min_time}
+                  max={info.rental.max_time}
+                  step="1"
+                  value={rangeValue}
+                  onChange={(i) => setRangeValue(i.target.value)}
+                />
+              </div>
+            )}
 
             <div className="buttons">
               {isLoading ? (

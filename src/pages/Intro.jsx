@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 
+
 export default function Intro() {
   const dispatch = useDispatch();
   const info = useSelector(store => store.washer.info);

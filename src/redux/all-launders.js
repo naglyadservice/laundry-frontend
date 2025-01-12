@@ -7,9 +7,6 @@ const fetchAllLaunders = createAsyncThunk("all/fetch", async (slug, api) => {
     const data = await req.json();
 
     return data;
-
-    // const req = await fetch(`https://666458a8932baf9032aac87b.mockapi.io/launders`);
-    // return data[0];
   } catch (error) {
     return api.rejectWithValue("Error")
   }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ErrorBoundary } from 'react-error-boundary';
 
@@ -11,10 +11,10 @@ import RangeLayout from '../components/RangeLayout';
 import Error from './Error';
 import OoopsError from './OoopsError';
 
+
+
 export default function Washer() {
   const { slug } = useParams();
-  const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const info = useSelector(store => store.washer);
 
@@ -34,10 +34,6 @@ export default function Washer() {
   if (info.isLoading) return <Spinner />;
 
   if (info.isError) return <OoopsError />;
-
-  // if (info.isError) return <Error title="Сторінку не знайдено" />;
-  // if (info.isError) return navigate("/error404");
-  // if (info.isError && info.info === 500) return navigate("/error500");
 
   return (
     <ErrorBoundary fallback={<Error title="Сталася помилка, зверніться до адміністрації" />}>

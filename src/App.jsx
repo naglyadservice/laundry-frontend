@@ -16,22 +16,19 @@ export default function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          {/* Existing Routes */}
-          <Route path='/all/:slug' element={<AllLaunders />} />
           <Route path='/wash' element={<Intro />} />
+          <Route path='/all/:slug' element={<AllLaunders />} />
+
+          <Route path='/wm/:slug' element={<Washer />} />
           <Route path='/washers/:slug' element={<Washer />} />
+          <Route path='/washing-machines/:slug' element={<Washer />} />
+
           <Route path='/error404' element={<Error title="Сторінку не знайдено" />} />
           <Route path='/error500' element={<Error title="Сталася помилка, зверніться до адміністрації" />} />
-
-          {/* Redirect from /ws/:slug to /washers/:slug */}
-          <Route path='/wm/:slug' element={<Washer />} />
-          <Route path='/washing-machines/:slug' element={<Washer />} />
 
           <Route path='/support' element={<ExternalRedirect url='https://t.me/info_naglyad_wash' />} />
 
           <Route path='*' element={<OoopsError />} />
-          {/* <Route path='*' element={<Error title="Сторінку не знайдено" />} /> */}
-          {/* <Route path='*' element={<Navigate to="/error404" replace />} /> */}
         </Routes>
       </BrowserRouter>
     </Provider>
