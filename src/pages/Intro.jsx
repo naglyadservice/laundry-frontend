@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchInfo } from '../redux/washer-redux';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { fetchInfo } from '../redux/washer-redux.async';
 
 
 

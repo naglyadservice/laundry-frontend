@@ -10,7 +10,7 @@ export default function RangeLayout({ status }) {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
   const [isAdditionalInfo, setIsAdditionalInfo] = React.useState(false);
-  const [rangeValue, setRangeValue] = React.useState(0);
+  const [rangeValue, setRangeValue] = React.useState(1);
 
   const onButtonClick = async () => {
     try {

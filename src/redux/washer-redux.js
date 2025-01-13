@@ -1,61 +1,9 @@
-import { configureStore, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+
+import { fetchInfo, fetchPayment, fetchStatus } from "./washer-redux.async";
 import { allWashersSlice } from "./all-launders";
 
-const fetchInfo = createAsyncThunk(
-  "washer/info",
-  async function (slug, api) {
-    try {
-      const request = await fetch(`${process.env.REACT_APP_DOMAIN}/api/washing_machine/${slug}`);
-      const data = await request.json();
-      if (!data || data.detail) throw new Error("washing mashing is missed");
-      return data;
-    } catch (error) {
-      return api.rejectWithValue(error);
-    }
-  }
-);
 
-const fetchStatus = createAsyncThunk(
-  "washer/status",
-  async function (slug, api) {
-    try {
-      const request = await fetch(`${process.env.REACT_APP_DOMAIN}/api/washing_machine/${slug}/status`);
-      const data = await request.json();
-      return data;
-    } catch (error) {
-      return api.rejectWithValue(error);
-    }
-  }
-);
-
-const fetchPayment = createAsyncThunk(
-  "washer/payment",
-  async function (slug, api) {
-    try {
-      const request = await fetch(`${process.env.REACT_APP_DOMAIN}/api/washing_machine/${slug}/payment`);
-      const data = await request.json();
-      return data;
-    } catch (error) {
-      return api.rejectWithValue(error);
-    }
-  }
-);
-
-const fetchPaymentFromRange = createAsyncThunk(
-  "washer/paymentWithRange",
-  async function (time, api) {
-    try {
-      const request = await fetch(`${process.env.REACT_APP_DOMAIN}/api/washing_machine/${slug}/payment`, {
-        method: "POST",
-        body: JSON.stringify({ time_minutes: time })
-      });
-      const data = await request.json();
-      return data;
-    } catch (error) {
-      return api.rejectWithValue(error);
-    }
-  }
-)
 
 const washerSlice = createSlice({
   name: "washer",
@@ -105,24 +53,6 @@ const washerSlice = createSlice({
 
     // ----------------
 
-    builder.addCase(fetchPaymentFromRange.pending, (state, action) => {
-      state.isLoading = true;
-      state.isError = false;
-    })
-
-    builder.addCase(fetchPaymentFromRange.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.isError = false;
-      state.payment = action.payload;
-    })
-
-    builder.addCase(fetchPaymentFromRange.rejected, (state, action) => {
-      state.isLoading = false;
-      state.isError = true;
-    })
-
-    // ----------------
-
     builder.addCase(fetchStatus.pending, (state, action) => {
       state.isLoading = true;
       state.isError = false;
@@ -148,4 +78,4 @@ const store = configureStore({
   }
 })
 
-export { store, fetchInfo, fetchPayment, fetchStatus }
+export { store }

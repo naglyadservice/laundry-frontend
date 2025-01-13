@@ -7,8 +7,8 @@ import Footer from '../components/Footer'
 import Spinner from '../components/Spinner';
 import Error from './Error';
 import Accordion from '../components/Accordion';
-import { fetchInfo } from '../redux/washer-redux';
 import { fetchAllLaunders } from '../redux/all-launders';
+import { fetchInfo } from '../redux/washer-redux.async';
 
 
 

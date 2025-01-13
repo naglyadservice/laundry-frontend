@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import { setColor } from '../helpers/setColor';
-import { fetchInfo, fetchPayment, fetchStatus } from '../redux/washer-redux';
+import { fetchInfo, fetchStatus } from '../redux/washer-redux.async';
 
 import Spinner from "../components/Spinner"
 import RangeLayout from '../components/RangeLayout';
@@ -26,8 +26,11 @@ export default function Washer() {
   }, [])
 
   React.useEffect(() => {
-    setColor(info, setStatus);
-  }, [info]);
+    if (typeof info.status === "object") return;
+    setColor(info, setStatus)
+  }, [info])
+
+  console.log(info.status)
 
   // ---------------------
 
